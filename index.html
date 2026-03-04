@@ -1,125 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <title>Website Ujian Pemrograman Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIGI- TECH</title>
-    <link rel="stylesheet" href="templatemo-prism-flux.css">
+
+    <style>
+        body{
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #4e73df, #1cc88a);
+        }
+
+        .navbar{
+            background: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .container{
+            background: white;
+            width: 420px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn{
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input, textarea{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus{
+            border-color: #4e73df;
+            outline: none;
+            box-shadow: 0 0 5px rgba(78,115,223,0.5);
+        }
+
+        .btn{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #4e73df;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover{
+            background: #2e59d9;
+        }
+
+        .hasil{
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fc;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        hr{
+            margin: 25px 0;
+        }
+
+        .doc-buttons button{
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
+
+        .s1{ background: #2d89ef; }
+        .s2{ background: #28a745; }
+        .s3{ background: #6f42c1; }
+
+        .doc-buttons button:hover{
+            opacity: 0.85;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Loading Screen -->
-    <div class="loader" id="loader">
-        <div class="loader-content">
-            <div class="loader-prism">
-                <div class="prism-face"></div>
-                <div class="prism-face"></div>
-                <div class="prism-face"></div>
-            </div>
-            <div style="color: var(--accent-purple); font-size: 18px; text-transform: uppercase; letter-spacing: 3px;">Refracting Reality...</div>
-        </div>
+<div class="navbar">
+    Website Ujian Pemrograman Web - XI TKJ
+</div>
+
+<div class="container">
+
+    <h2>Form Biodata</h2>
+
+    <form id="formBiodata">
+        <input type="text" id="nama" placeholder="Nama Lengkap" required>
+        <input type="text" id="kelas" placeholder="Kelas" required>
+        <textarea id="alamat" placeholder="Alamat" required></textarea>
+        <input type="date" id="tgl" required>
+        <button type="submit" class="btn">Simpan</button>
+    </form>
+
+    <div id="hasil" class="hasil" style="display:none;"></div>
+
+    <hr>
+
+    <h3>Dokumentasi Jawaban</h3>
+
+    <div class="doc-buttons">
+        <a href="soal1.html"><button class="s1">Jawaban Soal 1 (XAMPP)</button></a>
+        <a href="soal2.html"><button class="s2">Jawaban Soal 2 (Laragon)</button></a>
+        <a href="soal3.html"><button class="s3">Jawaban Soal 3 (GitHub Pages)</button></a>
     </div>
 
-    <!-- Navigation Header -->
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="#home" class="logo">
-                <div class="logo-icon">
-                    <div class="logo-prism">
-                        <div class="prism-shape"></div>
-                    </div>
-                </div>
-                <span class="logo-text">
-                    <span class="prism">PRISM</span>
-                    <span class="flux">FLUX</span>
-                </span>
-            </a>
-            
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#stats" class="nav-link">Metrics</a></li>
-                <li><a href="#skills" class="nav-link">Arsenal</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            
-            <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
+</div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="carousel-container">
-            <div class="carousel" id="carousel"></div>
-            
-            <div class="carousel-controls">
-                <button class="carousel-btn" id="prevBtn">‹</button>
-                <button class="carousel-btn" id="nextBtn">›</button>
-            </div>
-            
-            <div class="carousel-indicators" id="indicators"></div>
-        </div>
-    </section>
+<script>
+document.getElementById("formBiodata").addEventListener("submit", function(e){
+    e.preventDefault();
 
-    <!-- About Section -->
-    <section class="philosophy-section" id="about">
-        <div class="philosophy-container">
-            <div class="prism-line"></div>
-            
-            <h2 class="philosophy-headline">
-                Refracting Ideas<br>Into Reality
-            </h2>
-            
-            <p class="philosophy-subheading">
-                At PRISM FLUX, we transform complex challenges into elegant solutions through the convergence of 
-                cutting-edge technology and visionary design.
-            </p>
-            
-            <div class="philosophy-pillars">
-                
-                <!-- PKL -->
-                <div class="pillar">
-                    <div class="pillar-icon">💎</div>
-                    <h3 class="pillar-title">Praktik Kerja Lapangan</h3>
-                    <p class="pillar-description">
-                        My hands-on experience during internship where I learned real-world networking,
-                        system configuration, and IT troubleshooting in a professional environment.
-                    </p>
-                </div>
-                
-                <!-- CV -->
-                <div class="pillar">
-                    <div class="pillar-icon">📄</div>
-                    <h3 class="pillar-title">Curriculum Vitae</h3>
-                    <p class="pillar-description">
-                        A summary of my educational background, technical skills, and experiences
-                        that reflect my journey in the IT and networking field.
-                    </p>
-                    <a href= "https://almiraulaa313.blogspot.com/2025/04/cv-riwayat-hidup.html" target= "_blank" class = "cv-btn"> CV View </a>
-             </div>
-                
-                <!-- PROJECTS (UPDATED) -->
-                <div class="pillar">
-                    <div class="pillar-icon">💻</div>
-                    <h3 class="pillar-title">Projects</h3>
-                    <p class="pillar-description">
-                        A collection of projects I have worked on, including website development,
-                        network configuration, and system setup. Each project represents my growth
-                        and technical exploration in the IT field.
-                    </p>
-                </div>
-                
-            </div>
-            
-            <div class="philosophy-particles" id="particles"></div>
-        </div>
-    </section>
+    let nama = document.getElementById("nama").value;
+    let kelas = document.getElementById("kelas").value;
+    let alamat = document.getElementById("alamat").value;
+    let tgl = new Date(document.getElementById("tgl").value);
+    let today = new Date();
 
-<script src="templatemo-prism-scripts.js"></script>
+    let umur = today.getFullYear() - tgl.getFullYear();
+    let bulan = today.getMonth() - tgl.getMonth();
+
+    if (bulan < 0 || (bulan === 0 && today.getDate() < tgl.getDate())) {
+        umur--;
+    }
+
+    let hasilBox = document.getElementById("hasil");
+    hasilBox.style.display = "block";
+    hasilBox.innerHTML =
+        "<strong>Data Berhasil Disimpan</strong><br><br>" +
+        "Nama: " + nama + "<br>" +
+        "Kelas: " + kelas + "<br>" +
+        "Alamat: " + alamat + "<br>" +
+        "Umur: " + umur + " tahun";
+});
+</script>
+
 </body>
 </html>
-
